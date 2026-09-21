@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700;6..96,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FBF6EC;}
+*{box-sizing:border-box;}
+a{color:#0065AF;text-decoration:none;}
+a:hover{color:#C71218;}
+img{display:block;}
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;color:#1A1A1A;background:#FBF6EC;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,246,236,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="index.dc.html" style="display:block;flex:0 0 auto;"><img src="assets/deco/title_lockup.svg" alt="Italia in Fiera" style="height:46px;width:auto;"></a>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;flex:1 1 auto;font-size:13.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">
+        <a href="index.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nHome }}</a>
+        <a href="programma.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nProg }}</a>
+        <a href="concorso.dc.html" style="color:#C71218;padding:4px 0;border-bottom:2px solid #C71218;">{{ nFoto }}</a>
+        <a href="galleria.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nGal }}</a>
+        <a href="spazi.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nEsp }}</a>
+        <a href="quando-dove.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nDove }}</a>
+        <a href="sponsor.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nSpon }}</a>
+        <a href="contatti.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nCont }}</a>
+      </nav>
+      <div style="display:flex;gap:0;flex:0 0 auto;border:1px solid rgba(26,26,26,0.25);border-radius:2px;overflow:hidden;">
+        <button onClick="{{ setES }}" style="{{ btnES }}">ES</button>
+        <button onClick="{{ setIT }}" style="{{ btnIT }}">IT</button>
+      </div>
+    </div>
+    <div style="height:3px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;">
+    <img src="assets/deco/casino_sketch.svg" alt="" style="position:absolute;left:50%;top:-10%;width:66%;transform:translateX(-50%);opacity:0.09;pointer-events:none;">
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(34px,5vw,64px) 22px clamp(30px,4vw,48px);text-align:center;">
+      <p style="margin:0 0 12px;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:#0065AF;">{{ eyebrow }}</p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:900;font-size:clamp(40px,7vw,78px);line-height:0.98;text-wrap:balance;">{{ title }}</h1>
+      <p style="margin:20px auto 0;max-width:640px;font-size:18px;line-height:1.55;color:#4A4A4A;text-wrap:pretty;">{{ intro }}</p>
+      <div style="width:72px;height:4px;margin:24px auto 0;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 22px clamp(40px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,5vw,56px);align-items:start;">
+    <div style="min-width:0;">
+      <h2 style="margin:0 0 24px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(24px,3vw,34px);font-weight:700;">{{ howTitle }}</h2>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;">
+          <div style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#007030;color:#FFFFFF;font-family:'Bodoni Moda',Georgia,serif;font-size:26px;font-weight:900;">1</div>
+          <p style="margin:0;padding-top:8px;font-size:17px;line-height:1.5;text-wrap:pretty;">{{ s1 }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;">
+          <div style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#0065AF;color:#FFFFFF;font-family:'Bodoni Moda',Georgia,serif;font-size:26px;font-weight:900;">2</div>
+          <p style="margin:0;padding-top:8px;font-size:17px;line-height:1.5;text-wrap:pretty;">{{ s2 }}</p>
+        </div>
+        <div style="display:grid;grid-template-columns:52px minmax(0,1fr);gap:16px;align-items:start;">
+          <div style="width:52px;height:52px;display:flex;align-items:center;justify-content:center;background:#C71218;color:#FFFFFF;font-family:'Bodoni Moda',Georgia,serif;font-size:26px;font-weight:900;">3</div>
+          <p style="margin:0;padding-top:8px;font-size:17px;line-height:1.5;text-wrap:pretty;">{{ s3 }}</p>
+        </div>
+      </div>
+
+      <div style="margin-top:30px;padding:22px 24px;border-left:4px solid #C71218;background:rgba(199,18,24,0.07);">
+        <p style="margin:0 0 6px;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:#C71218;">{{ warnTitle }}</p>
+        <p style="margin:0;font-size:16px;line-height:1.55;color:#3A3A3A;text-wrap:pretty;">{{ warnBody }}</p>
+      </div>
+
+      <div style="margin-top:22px;display:flex;flex-direction:column;gap:12px;">
+        <p style="margin:0;font-size:16px;line-height:1.55;color:#3A3A3A;text-wrap:pretty;">{{ note1 }}</p>
+        <p style="margin:0;font-size:16px;line-height:1.55;color:#3A3A3A;text-wrap:pretty;">{{ note2 }}</p>
+      </div>
+
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px;">
+        <a href="galleria.dc.html" style="display:inline-block;padding:13px 26px;background:#1A1A1A;color:#FBF6EC;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;" style-hover="background:#C71218;color:#FFFFFF;">{{ ctaGal }}</a>
+        <a href="https://www.instagram.com/associazioneitalianiasiviglia/" target="_blank" rel="noopener" style="display:inline-block;padding:13px 26px;border:1.5px solid #1A1A1A;color:#1A1A1A;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;" style-hover="background:#1A1A1A;color:#FBF6EC;">@associazioneitalianiasiviglia</a>
+      </div>
+    </div>
+
+    <div style="min-width:0;display:flex;justify-content:center;">
+      <img src="assets/concurso-foto.jpeg" alt="Photocall de la feria" style="width:100%;max-width:440px;height:auto;border:1px solid rgba(26,26,26,0.14);box-shadow:0 22px 52px -24px rgba(26,26,26,0.45);">
+    </div>
+  </section>
+
+  <section style="background:#1A1A1A;color:#FBF6EC;">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(34px,5vw,56px) 22px;text-align:center;">
+      <p style="margin:0 0 10px;font-size:13px;letter-spacing:0.24em;text-transform:uppercase;color:#7FB6E0;font-weight:700;">{{ hashLabel }}</p>
+      <p style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(28px,5vw,54px);font-weight:900;">#feriaitaliasevilla</p>
+    </div>
+  </section>
+
+  <footer style="background:#FBF6EC;border-top:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 22px 30px;">
+      <div style="height:3px;margin:0 0 18px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+      <p style="margin:0;text-align:center;font-size:13px;color:#6A6A6A;">X Feria de Italia · Sevilla 2026 · @associazioneitalianiasiviglia</p>
+      <p style="margin:10px 0 0;text-align:center;font-size:11px;color:#A8A8A8;">{{ credit }} <a href="https://rapidoybien.es" target="_blank" rel="noopener noreferrer" style="color:#A8A8A8;text-decoration:none;border-bottom:1px solid rgba(168,168,168,0.4);">rapidoybien.es</a></p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'es' };
+  componentDidMount() {
+    try { const l = localStorage.getItem('iif-lang'); if (l === 'it' || l === 'es') this.setState({ lang: l }); } catch (e) {}
+  }
+  setLang(l) { try { localStorage.setItem('iif-lang', l); } catch (e) {} this.setState({ lang: l }); }
+  nav(L) {
+    const N = {
+      es: { nHome:'Inicio', nProg:'Programa', nFoto:'Concurso', nGal:'Galería', nEsp:'Espacios', nDove:'Cuándo y dónde', nSpon:'Patrocinadores', nCont:'Contacto' },
+      it: { nHome:'Home', nProg:'Programma', nFoto:'Concorso', nGal:'Galleria', nEsp:'Spazi', nDove:'Quando e dove', nSpon:'Sponsor', nCont:'Contatti' }
+    };
+    return N[L];
+  }
+  langBtns(L) {
+    const on = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:#1A1A1A;color:#FBF6EC;';
+    const off = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:transparent;color:#1A1A1A;';
+    return { btnES: L === 'es' ? on : off, btnIT: L === 'it' ? on : off };
+  }
+  renderVals() {
+    const L = this.state.lang;
+    const T = {
+      es: {
+        eyebrow: '¡Saca tu mejor foto!',
+        title: 'Photocall de la Feria',
+        intro: '¿Te haces un selfie, una foto con tus amigos o una foto original en nuestro photocall? ¡Puede tener premio!',
+        howTitle: '¿Cómo participar?',
+        s1: 'Hazte una foto en el photocall de los sponsor y patrocinadores.',
+        s2: 'Publícala en tu historia de Instagram o en una publicación.',
+        s3: 'Menciona a @associazioneitalianiasiviglia y añade el hashtag #feriaitaliasevilla.',
+        warnTitle: '¡Importante!',
+        warnBody: 'Tu perfil de Instagram debe ser público para que podamos ver tu participación.',
+        note1: 'El ganador/a se decidirá el domingo por la tarde, al finalizar la Feria.',
+        note2: 'La persona ganadora será contactada directamente por Instagram para la entrega del premio en el Casino.',
+        ctaGal: 'Ver la galería',
+        hashLabel: 'No olvides el hashtag',
+        credit: 'Creado por'
+      },
+      it: {
+        eyebrow: 'Scatta la tua foto migliore!',
+        title: 'Photocall della Fiera',
+        intro: 'Un selfie, una foto con gli amici o uno scatto originale al nostro photocall? Può vincere un premio!',
+        howTitle: 'Come si partecipa?',
+        s1: 'Fatti una foto al photocall degli sponsor e dei partner.',
+        s2: 'Pubblicala nella tua storia Instagram o in un post.',
+        s3: 'Menziona @associazioneitalianiasiviglia e aggiungi l’hashtag #feriaitaliasevilla.',
+        warnTitle: 'Importante!',
+        warnBody: 'Il tuo profilo Instagram deve essere pubblico perché possiamo vedere la tua partecipazione.',
+        note1: 'Il vincitore o la vincitrice sarà scelto domenica pomeriggio, alla chiusura della Fiera.',
+        note2: 'La persona vincitrice sarà contattata direttamente su Instagram per la consegna del premio al Casino.',
+        ctaGal: 'Vedi la galleria',
+        hashLabel: 'Non dimenticare l’hashtag',
+        credit: 'Creato da'
+      }
+    }[L];
+    return Object.assign({}, this.nav(L), this.langBtns(L), T, {
+      setES: () => this.setLang('es'),
+      setIT: () => this.setLang('it')
+    });
+  }
+}
+</script>
+</body>
+</html>

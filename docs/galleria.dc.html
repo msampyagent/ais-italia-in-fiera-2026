@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700;6..96,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FBF6EC;}
+*{box-sizing:border-box;}
+a{color:#0065AF;text-decoration:none;}
+a:hover{color:#C71218;}
+img{display:block;}
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;color:#1A1A1A;background:#FBF6EC;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,246,236,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="index.dc.html" style="display:block;flex:0 0 auto;"><img src="assets/deco/title_lockup.svg" alt="Italia in Fiera" style="height:46px;width:auto;"></a>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;flex:1 1 auto;font-size:13.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">
+        <a href="index.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nHome }}</a>
+        <a href="programma.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nProg }}</a>
+        <a href="concorso.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nFoto }}</a>
+        <a href="galleria.dc.html" style="color:#C71218;padding:4px 0;border-bottom:2px solid #C71218;">{{ nGal }}</a>
+        <a href="spazi.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nEsp }}</a>
+        <a href="quando-dove.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nDove }}</a>
+        <a href="sponsor.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nSpon }}</a>
+        <a href="contatti.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nCont }}</a>
+      </nav>
+      <div style="display:flex;gap:0;flex:0 0 auto;border:1px solid rgba(26,26,26,0.25);border-radius:2px;overflow:hidden;">
+        <button onClick="{{ setES }}" style="{{ btnES }}">ES</button>
+        <button onClick="{{ setIT }}" style="{{ btnIT }}">IT</button>
+      </div>
+    </div>
+    <div style="height:3px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;">
+    <img src="assets/deco/casino_sketch.svg" alt="" style="position:absolute;left:50%;top:-10%;width:66%;transform:translateX(-50%);opacity:0.09;pointer-events:none;">
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(34px,5vw,64px) 22px clamp(24px,3vw,36px);text-align:center;">
+      <p style="margin:0 0 12px;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:#0065AF;">{{ eyebrow }}</p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:900;font-size:clamp(38px,6vw,68px);line-height:1;">{{ title }}</h1>
+      <p style="margin:18px auto 0;max-width:620px;font-size:17px;line-height:1.55;color:#4A4A4A;text-wrap:pretty;">{{ intro }}</p>
+      <div style="width:72px;height:4px;margin:24px auto 0;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+    </div>
+  </section>
+
+  <sc-if value="{{ hasPodio }}" hint-placeholder-val="{{ true }}">
+    <section style="max-width:1180px;margin:0 auto;padding:clamp(20px,3vw,32px) 22px clamp(28px,4vw,48px);">
+      <h2 style="margin:0 0 22px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(24px,3vw,34px);font-weight:700;text-align:center;">{{ podioTitle }}</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+        <sc-for list="{{ podio }}" as="p" hint-placeholder-count="3">
+          <figure style="margin:0;background:#FFFFFF;border:1px solid rgba(26,26,26,0.14);box-shadow:0 18px 40px -22px rgba(26,26,26,0.5);">
+            <div style="position:relative;">
+              <img src="{{ p.src }}" alt="" onClick="{{ p.open }}" style="width:100%;aspect-ratio:1/1;object-fit:cover;cursor:zoom-in;">
+              <div style="{{ p.badge }}">{{ p.pos }}</div>
+            </div>
+            <figcaption style="{{ p.bar }}"></figcaption>
+          </figure>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <section style="max-width:1180px;margin:0 auto;padding:clamp(16px,2vw,24px) 22px clamp(48px,6vw,80px);">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;border-top:1px solid rgba(26,26,26,0.14);padding-top:24px;">
+      <h2 style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(22px,2.6vw,30px);font-weight:700;">{{ gridTitle }}</h2>
+      <p style="margin:0;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#6A6A6A;font-weight:600;">{{ countLabel }}</p>
+    </div>
+
+    <sc-if value="{{ loading }}" hint-placeholder-val="{{ true }}">
+      <p style="margin:40px 0;text-align:center;font-size:16px;color:#6A6A6A;">{{ loadingLabel }}</p>
+    </sc-if>
+
+    <sc-if value="{{ empty }}">
+      <div style="margin:20px 0;padding:44px 26px;text-align:center;border:1px dashed rgba(26,26,26,0.3);background:rgba(26,26,26,0.03);">
+        <p style="margin:0 0 8px;font-family:'Bodoni Moda',Georgia,serif;font-size:22px;font-weight:700;">{{ emptyTitle }}</p>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:#4A4A4A;">{{ emptyBody }}</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ hasRest }}">
+      <div style="columns:4 230px;column-gap:16px;">
+        <sc-for list="{{ rest }}" as="r" hint-placeholder-count="9">
+          <img src="{{ r.src }}" alt="" onClick="{{ r.open }}" style="width:100%;height:auto;margin:0 0 16px;break-inside:avoid;border:1px solid rgba(26,26,26,0.12);cursor:zoom-in;background:#FFFFFF;">
+        </sc-for>
+      </div>
+    </sc-if>
+  </section>
+
+  <sc-if value="{{ lightboxOpen }}">
+    <div onClick="{{ close }}" style="position:fixed;inset:0;z-index:100;background:rgba(18,18,18,0.94);display:flex;align-items:center;justify-content:center;padding:36px 60px;cursor:zoom-out;">
+      <img src="{{ lightboxSrc }}" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;box-shadow:0 30px 80px -30px rgba(0,0,0,0.9);">
+      <button onClick="{{ prev }}" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);width:44px;height:64px;border:0;background:rgba(251,246,236,0.12);color:#FBF6EC;font-size:26px;cursor:pointer;font-family:'Bodoni Moda',Georgia,serif;">‹</button>
+      <button onClick="{{ next }}" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);width:44px;height:64px;border:0;background:rgba(251,246,236,0.12);color:#FBF6EC;font-size:26px;cursor:pointer;font-family:'Bodoni Moda',Georgia,serif;">›</button>
+      <button onClick="{{ close }}" style="position:absolute;right:16px;top:16px;width:40px;height:40px;border:0;background:transparent;color:#FBF6EC;font-size:26px;cursor:pointer;line-height:1;">×</button>
+      <p style="position:absolute;left:0;right:0;bottom:12px;margin:0;text-align:center;font-size:13px;letter-spacing:0.18em;color:rgba(251,246,236,0.7);">{{ lightboxLabel }}</p>
+    </div>
+  </sc-if>
+
+  <footer style="background:#FBF6EC;border-top:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 22px 30px;">
+      <div style="height:3px;margin:0 0 18px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+      <p style="margin:0;text-align:center;font-size:13px;color:#6A6A6A;">X Feria de Italia · Sevilla 2026 · @associazioneitalianiasiviglia</p>
+      <p style="margin:10px 0 0;text-align:center;font-size:11px;color:#A8A8A8;">{{ credit }} <a href="https://rapidoybien.es" target="_blank" rel="noopener noreferrer" style="color:#A8A8A8;text-decoration:none;border-bottom:1px solid rgba(168,168,168,0.4);">rapidoybien.es</a></p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  static MAX = 140;
+  static GAP = 6;
+  static EXTS = ['jpg', 'jpeg', 'png', 'webp'];
+
+  state = { lang: 'es', loading: true, photos: [], podio: [], open: -1 };
+
+  componentDidMount() {
+    try { const l = localStorage.getItem('iif-lang'); if (l === 'it' || l === 'es') this.setState({ lang: l }); } catch (e) {}
+    this._key = (e) => {
+      if (this.state.open < 0) return;
+      if (e.key === 'Escape') this.setState({ open: -1 });
+      if (e.key === 'ArrowRight') this.step(1);
+      if (e.key === 'ArrowLeft') this.step(-1);
+    };
+    window.addEventListener('keydown', this._key);
+    this.load();
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._key); }
+
+  exists(url) {
+    return new Promise((res) => {
+      const im = new Image();
+      im.onload = () => res(true);
+      im.onerror = () => res(false);
+      im.src = url;
+    });
+  }
+
+  async load() {
+    let podio = [];
+    try {
+      const r = await fetch('foto/podio.json', { cache: 'no-store' });
+      if (r.ok) {
+        const j = await r.json();
+        if (Array.isArray(j)) podio = j.filter((x) => x && x.foto).slice();
+      }
+    } catch (e) {}
+    podio.sort((a, b) => (Number(a.posicion) || 999) - (Number(b.posicion) || 999));
+
+    const found = [];
+    let misses = 0;
+    for (let i = 1; i <= Component.MAX; i++) {
+      const n = String(i).padStart(3, '0');
+      let hit = null;
+      for (const ext of Component.EXTS) {
+        const u = 'foto/' + n + '.' + ext;
+        if (await this.exists(u)) { hit = u; break; }
+      }
+      if (hit) { found.push(hit); misses = 0; }
+      else { misses++; if (misses >= Component.GAP) break; }
+    }
+    const valid = [];
+    for (const p of podio) {
+      const src = this.norm(p.foto);
+      if (found.indexOf(src) !== -1 || await this.exists(src)) valid.push(p);
+    }
+    this.setState({ photos: found, podio: valid, loading: false });
+  }
+
+  norm(p) { return String(p).replace(/^\.?\//, ''); }
+
+  order() {
+    const podioSrcs = this.state.podio.map((p) => this.norm(p.foto));
+    const rest = this.state.photos.filter((s) => podioSrcs.indexOf(this.norm(s)) === -1);
+    return { podioSrcs: podioSrcs, rest: rest, all: podioSrcs.concat(rest) };
+  }
+
+  step(d) {
+    const all = this.order().all;
+    if (!all.length) return;
+    this.setState({ open: (this.state.open + d + all.length) % all.length });
+  }
+
+  setLang(l) { try { localStorage.setItem('iif-lang', l); } catch (e) {} this.setState({ lang: l }); }
+
+  nav(L) {
+    const N = {
+      es: { nHome:'Inicio', nProg:'Programa', nFoto:'Concurso', nGal:'Galería', nEsp:'Espacios', nDove:'Cuándo y dónde', nSpon:'Patrocinadores', nCont:'Contacto' },
+      it: { nHome:'Home', nProg:'Programma', nFoto:'Concorso', nGal:'Galleria', nEsp:'Spazi', nDove:'Quando e dove', nSpon:'Sponsor', nCont:'Contatti' }
+    };
+    return N[L];
+  }
+  langBtns(L) {
+    const on = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:#1A1A1A;color:#FBF6EC;';
+    const off = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:transparent;color:#1A1A1A;';
+    return { btnES: L === 'es' ? on : off, btnIT: L === 'it' ? on : off };
+  }
+
+  medal(i) {
+    return ['#C9A227', '#9AA0A6', '#B07242'][i] || '#0065AF';
+  }
+
+  renderVals() {
+    const L = this.state.lang;
+    const T = {
+      es: {
+        eyebrow: 'Concurso del photocall',
+        title: 'Galería',
+        intro: 'Todas las fotos del photocall de la feria. El podio lo elige el jurado; el resto se muestra en orden de llegada.',
+        podioTitle: 'El podio del jurado',
+        gridTitle: 'Todas las fotos',
+        loadingLabel: 'Cargando las fotos…',
+        emptyTitle: 'Todavía no hay fotos',
+        emptyBody: 'La galería se publicará durante la feria. Vuelve a mirar el domingo por la tarde.',
+        photosWord: 'fotos',
+        credit: 'Creado por'
+      },
+      it: {
+        eyebrow: 'Concorso del photocall',
+        title: 'Galleria',
+        intro: 'Tutte le foto del photocall della fiera. Il podio lo sceglie la giuria; le altre sono in ordine di arrivo.',
+        podioTitle: 'Il podio della giuria',
+        gridTitle: 'Tutte le foto',
+        loadingLabel: 'Caricamento delle foto…',
+        emptyTitle: 'Ancora nessuna foto',
+        emptyBody: 'La galleria sarà pubblicata durante la fiera. Ripassa domenica pomeriggio.',
+        photosWord: 'foto',
+        credit: 'Creato da'
+      }
+    }[L];
+
+    const o = this.order();
+    const podio = this.state.podio.map((p, i) => {
+      const src = this.norm(p.foto);
+      const c = this.medal(i);
+      return {
+        src: src,
+        pos: String(p.posicion != null ? p.posicion : i + 1),
+        badge: 'position:absolute;left:0;top:0;min-width:56px;height:56px;padding:0 10px;display:flex;align-items:center;justify-content:center;background:' + c + ';color:#FFFFFF;font-family:\'Bodoni Moda\',Georgia,serif;font-size:30px;font-weight:900;line-height:1;',
+        bar: 'display:block;height:6px;background:' + c + ';',
+        open: () => this.setState({ open: i })
+      };
+    });
+    const rest = o.rest.map((src) => ({
+      src: src,
+      open: () => this.setState({ open: o.all.indexOf(src) })
+    }));
+
+    const total = o.all.length;
+    return Object.assign({}, this.nav(L), this.langBtns(L), T, {
+      setES: () => this.setLang('es'),
+      setIT: () => this.setLang('it'),
+      loading: this.state.loading,
+      empty: !this.state.loading && total === 0,
+      hasPodio: !this.state.loading && podio.length > 0,
+      hasRest: !this.state.loading && rest.length > 0,
+      podio: podio,
+      rest: rest,
+      countLabel: this.state.loading ? '' : total + ' ' + T.photosWord,
+      lightboxOpen: this.state.open >= 0,
+      lightboxSrc: this.state.open >= 0 ? o.all[this.state.open] : '',
+      lightboxLabel: this.state.open >= 0 ? (this.state.open + 1) + ' / ' + total : '',
+      close: () => this.setState({ open: -1 }),
+      prev: (e) => { if (e) e.stopPropagation(); this.step(-1); },
+      next: (e) => { if (e) e.stopPropagation(); this.step(1); }
+    });
+  }
+}
+</script>
+</body>
+</html>

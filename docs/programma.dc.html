@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700;6..96,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FBF6EC;}
+*{box-sizing:border-box;}
+a{color:#0065AF;text-decoration:none;}
+a:hover{color:#C71218;}
+img{display:block;}
+@keyframes iif-pulse{0%{box-shadow:0 0 0 0 rgba(199,18,24,0.35);}70%{box-shadow:0 0 0 10px rgba(199,18,24,0);}100%{box-shadow:0 0 0 0 rgba(199,18,24,0);}}
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;color:#1A1A1A;background:#FBF6EC;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,246,236,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="index.dc.html" style="display:block;flex:0 0 auto;"><img src="assets/deco/title_lockup.svg" alt="Italia in Fiera" style="height:46px;width:auto;"></a>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;flex:1 1 auto;font-size:13.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">
+        <a href="index.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nHome }}</a>
+        <a href="programma.dc.html" style="color:#C71218;padding:4px 0;border-bottom:2px solid #C71218;">{{ nProg }}</a>
+        <a href="concorso.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nFoto }}</a>
+        <a href="galleria.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nGal }}</a>
+        <a href="spazi.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nEsp }}</a>
+        <a href="quando-dove.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nDove }}</a>
+        <a href="sponsor.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nSpon }}</a>
+        <a href="contatti.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nCont }}</a>
+      </nav>
+      <div style="display:flex;gap:0;flex:0 0 auto;border:1px solid rgba(26,26,26,0.25);border-radius:2px;overflow:hidden;">
+        <button onClick="{{ setES }}" style="{{ btnES }}">ES</button>
+        <button onClick="{{ setIT }}" style="{{ btnIT }}">IT</button>
+      </div>
+    </div>
+    <div style="height:3px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;">
+    <img src="assets/deco/casino_sketch.svg" alt="" style="position:absolute;left:50%;top:-6%;width:70%;transform:translateX(-50%);opacity:0.09;pointer-events:none;">
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(34px,5vw,64px) 22px clamp(20px,3vw,32px);text-align:center;">
+      <p style="margin:0 0 12px;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:#0065AF;">{{ eyebrow }}</p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:900;font-size:clamp(38px,6vw,68px);line-height:1;">{{ title }}</h1>
+      <div style="width:72px;height:4px;margin:22px auto 0;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:clamp(18px,3vw,34px) 22px clamp(40px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(28px,4vw,52px);">
+    <sc-for list="{{ days }}" as="day" hint-placeholder-count="2">
+      <div style="min-width:0;">
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+          <h2 style="margin:0 0 4px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(24px,2.8vw,32px);font-weight:700;color:#0065AF;">{{ day.name }}</h2>
+          <sc-if value="{{ day.isToday }}">
+            <span style="display:inline-block;margin-bottom:4px;padding:2px 10px;border-radius:20px;background:#C71218;color:#FBF6EC;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;">{{ todayLabel }}</span>
+          </sc-if>
+        </div>
+        <p style="margin:0 0 22px;font-size:14px;letter-spacing:0.14em;text-transform:uppercase;color:#6A6A6A;font-weight:600;">{{ day.hours }}</p>
+        <sc-for list="{{ day.items }}" as="it" hint-placeholder-count="6">
+          <div style="{{ it.rowStyle }}">
+            <div style="{{ it.timeStyle }}">{{ it.ora }}</div>
+            <div style="min-width:0;">
+              <p style="margin:0;font-size:16.5px;line-height:1.4;font-weight:700;color:#1A1A1A;text-wrap:pretty;">{{ it.t }}<sc-if value="{{ it.active }}"> <span style="display:inline-block;margin-left:8px;padding:2px 8px;border-radius:20px;background:#C71218;color:#FBF6EC;font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;vertical-align:middle;">{{ nowLabel }}</span></sc-if></p>
+              <p style="margin:4px 0 0;font-size:15px;line-height:1.5;color:#4A4A4A;text-wrap:pretty;">{{ it.s }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </section>
+
+  <section style="background:#1A1A1A;color:#FBF6EC;">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(40px,6vw,68px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4vw,52px);">
+      <div style="min-width:0;">
+        <h2 style="margin:0 0 20px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(22px,2.6vw,30px);font-weight:700;">{{ permTitle }}</h2>
+        <sc-for list="{{ perm }}" as="p" hint-placeholder-count="4">
+          <p style="margin:0;padding:11px 0;border-top:1px solid rgba(251,246,236,0.18);font-size:16px;line-height:1.5;color:rgba(251,246,236,0.88);">{{ p }}</p>
+        </sc-for>
+      </div>
+      <div style="min-width:0;align-self:start;padding:26px 24px;border:1px solid rgba(127,182,224,0.5);background:rgba(0,101,175,0.14);">
+        <h3 style="margin:0 0 12px;font-size:14px;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:#7FB6E0;">{{ regTitle }}</h3>
+        <p style="margin:0;font-size:16px;line-height:1.6;color:rgba(251,246,236,0.92);text-wrap:pretty;">{{ regBody }}</p>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#FBF6EC;border-top:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 22px 30px;">
+      <p style="margin:0 0 24px;text-align:center;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:#6A6A6A;font-weight:600;">{{ orgBy }}</p>
+      <div style="display:flex;flex-wrap:wrap;gap:34px;align-items:center;justify-content:center;">
+        <img src="assets/logos/consolato_italia.png" alt="Consolato Generale d'Italia Madrid" style="height:52px;width:auto;">
+        <img src="assets/deco/logo_ais.svg" alt="Associazione Italiani a Siviglia" style="height:52px;width:auto;">
+        <img src="assets/logos/nosdo_sevilla.png" alt="Ayuntamiento de Sevilla" style="height:42px;width:auto;">
+        <img src="assets/logos/comites_madrid.png" alt="Com.It.Es. Madrid" style="height:46px;width:auto;">
+      </div>
+      <div style="height:3px;margin:34px 0 18px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+      <p style="margin:0;text-align:center;font-size:13px;color:#6A6A6A;">X Feria de Italia · Sevilla 2026 · @associazioneitalianiasiviglia</p>
+      <p style="margin:10px 0 0;text-align:center;font-size:11px;color:#A8A8A8;">{{ credit }} <a href="https://rapidoybien.es" target="_blank" rel="noopener noreferrer" style="color:#A8A8A8;text-decoration:none;border-bottom:1px solid rgba(168,168,168,0.4);">rapidoybien.es</a></p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'es', now: new Date() };
+  componentDidMount() {
+    try { const l = localStorage.getItem('iif-lang'); if (l === 'it' || l === 'es') this.setState({ lang: l }); } catch (e) {}
+    this._clock = setInterval(() => this.setState({ now: new Date() }), 30000);
+  }
+  componentWillUnmount() { clearInterval(this._clock); }
+  setLang(l) { try { localStorage.setItem('iif-lang', l); } catch (e) {} this.setState({ lang: l }); }
+  minutesOf(hhmm) {
+    const [h, m] = String(hhmm).trim().split(':').map(Number);
+    return h * 60 + (m || 0);
+  }
+  // Confronta l'orario reale con gli slot del programma per capire quale
+  // attività è in corso adesso, ed espone stili "pulsanti" per la riga attiva.
+  withLiveStatus(days) {
+    const now = this.state.now;
+    const pad = (n) => String(n).padStart(2, '0');
+    const todayStr = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+    return days.map((day) => {
+      const isToday = day.date === todayStr;
+      const starts = [...new Set(day.items.map((it) => this.minutesOf(it.ora)))].sort((a, b) => a - b);
+      const closeMin = this.minutesOf(day.hours.split('–')[1] || day.hours);
+      const items = day.items.map((it) => {
+        const start = this.minutesOf(it.ora);
+        const next = starts.find((s) => s > start);
+        const end = next !== undefined ? next : closeMin;
+        const active = isToday && nowMin >= start && nowMin < end;
+        const baseRow = 'display:grid;grid-template-columns:76px minmax(0,1fr);gap:16px;padding:14px 12px;margin:0 -12px;border-top:1px solid rgba(26,26,26,0.14);border-radius:8px;';
+        const baseTime = "font-family:'Bodoni Moda',Georgia,serif;font-size:20px;font-weight:700;color:#C71218;line-height:1.3;";
+        return Object.assign({}, it, {
+          active,
+          rowStyle: baseRow + (active ? 'background:rgba(199,18,24,0.07);animation:iif-pulse 1.8s ease-out infinite;' : ''),
+          timeStyle: baseTime + (active ? 'text-shadow:0 0 10px rgba(199,18,24,0.35);' : '')
+        });
+      });
+      return Object.assign({}, day, { isToday, items });
+    });
+  }
+  nav(L) {
+    const N = {
+      es: { nHome:'Inicio', nProg:'Programa', nFoto:'Concurso', nGal:'Galería', nEsp:'Espacios', nDove:'Cuándo y dónde', nSpon:'Patrocinadores', nCont:'Contacto' },
+      it: { nHome:'Home', nProg:'Programma', nFoto:'Concorso', nGal:'Galleria', nEsp:'Spazi', nDove:'Quando e dove', nSpon:'Sponsor', nCont:'Contatti' }
+    };
+    return N[L];
+  }
+  langBtns(L) {
+    const on = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:#1A1A1A;color:#FBF6EC;';
+    const off = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:transparent;color:#1A1A1A;';
+    return { btnES: L === 'es' ? on : off, btnIT: L === 'it' ? on : off };
+  }
+  data() {
+    return {
+      es: {
+        eyebrow: 'X Feria de Italia · Sevilla',
+        title: 'Programa',
+        orgBy: 'Organizan y colaboran',
+        credit: 'Creado por',
+        permTitle: 'Actividades permanentes durante toda la feria',
+        perm: [
+          'Exposición de obras de Alexandra Del Bene.',
+          'Ambientación musical durante toda la feria.',
+          'Zonas de comida y restauración (food corners) con platos tradicionales italianos.',
+          'Stands con productos típicos e información cultural y turística.'
+        ],
+        regTitle: 'Inscripciones',
+        regBody: 'Las conferencias, talleres y demás actividades con aforo limitado se celebrarán principalmente en los Espacios A y B de la Feria. Será necesario inscribirse previamente en el stand de AIS, hasta completar el aforo disponible.',
+        nowLabel: 'En curso ahora',
+        todayLabel: 'Hoy',
+        days: [
+          { name: 'Sábado, 3 de octubre', date: '2026-10-03', hours: '11:00 – 23:00', items: [
+            { ora:'11:00', t:'Apertura de Puertas', s:'Dirigido a la ciudadanía de Sevilla y visitantes.' },
+            { ora:'11:30', t:'Actuación de la Banda Sinfónica Municipal de Sevilla', s:'Bajo la dirección de Guillermo Martínez Arana.' },
+            { ora:'12:15', t:'Masterclass de Pizza', s:'A cargo de Antonio Silvestri, Maestro Pizzero Napolitano del GMI FOOD GROUP.' },
+            { ora:'13:00', t:'MAMMA MIA! Sopravvivenza in Italia: parla, ordina e gesticola come un italiano', s:'Organiza: Società Dante Alighieri di Siviglia. Aforo limitado.' },
+            { ora:'14:00', t:'Exposición y Concentración de Motocicletas Vespa Históricas', s:'Organizan: Vestacados Alcores.' },
+            { ora:'16:00', t:'Taller Infantil: Manualidades con la pasta', s:'Taller para niños de 5 a 9 años. Organiza Federica (La Cocinera Tremenda). Aforo limitado.' },
+            { ora:'16:15', t:'Proyección del Docufilm «UTOPIA – VIAGGI SENZA RITORNO»', s:'Producido por Com.It.Es. Madrid.' },
+            { ora:'17:30', t:'Conferencia con Antonio Gnisci: Ingeniería Romana', s:'Con la participación de la Asociación Latium Madrid, acompañados por la Asociación de Recreación Histórica ULPIA AELIA.' },
+            { ora:'18:30', t:'Actuación del Coro Italiani in Spagna de Madrid', s:'Dirigido por Francesco Ercolani.' },
+            { ora:'18:30', t:'Taller Infantil: E se arrivasse un pinguino a Siviglia?', s:'Laboratorio de pensamiento creativo para niños de 8 a 12 años, impartido por Cecilia Ravaioli.' },
+            { ora:'19:30', t:'Encuentro Cultural: “ITALOFONIA: Lingua oltre i confini”', s:'Taller con Alfredo.' },
+            { ora:'20:30', t:'Concierto de Música Italiana', s:'Dúo Rocca Pantaleoni.' },
+            { ora:'21:30', t:'Disco Italia', s:'Sesión con DJ Rega.' },
+            { ora:'23:00', t:'Cierre de la 1ª Jornada', s:'' }
+          ]},
+          { name: 'Domingo, 4 de octubre', date: '2026-10-04', hours: '10:00 – 20:00', items: [
+            { ora:'10:00', t:'Apertura de Puertas', s:'' },
+            { ora:'11:00', t:'Taller Infantil: “Giocare al Teatro”', s:'Laboratorio teatral para niños de 5 a 9 años, impartido por Cecilia Ravaioli.' },
+            { ora:'11:00', t:'Conferencia de Arte e Historia: Del Cuatrocientos al Barro de Triana', s:'El injerto de la mayólica toscana en la Sevilla mudéjar a través de Niculoso Pisano.' },
+            { ora:'12:00', t:'Beberse la Historia. El vino de la Bética romana', s:'A cargo de Manuel León Bejar, Director científico de Gastronomía de la Universidad de Cádiz (UCA).' },
+            { ora:'14:00', t:'Disco Italia', s:'Sesión con Deliberato DJ.' },
+            { ora:'16:00', t:'Taller de Crecimiento Creativo: “Pensare Fuori Dagli Schemi”', s:'Laboratorio de pensamiento creativo y divergente para adultos, impartido por Cecilia Ravaioli.' },
+            { ora:'17:15', t:'Conversación Literaria: Italia y Andalucía: “Las dos orillas del viaje”', s:'Con Alessandro Gianetti e Ignacio Arrabal. Traducción del libro “La mappa del mare”, de Ignacio Arrabal, la búsqueda incesante de los viajeros y los intercambios culturales con Andalucía.' },
+            { ora:'18:00', t:'Karaoke Italiano', s:'Organizado por AIS.' },
+            { ora:'20:00', t:'Clausura Oficial de la X Feria de Italia', s:'Agradecimientos institucionales y cierre del evento.' }
+          ]}
+        ]
+      },
+      it: {
+        eyebrow: 'X Fiera d’Italia · Siviglia',
+        title: 'Programma',
+        orgBy: 'Organizzano e collaborano',
+        credit: 'Creato da',
+        permTitle: 'Attività permanenti per tutta la durata della fiera',
+        perm: [
+          'Esposizione opere di Alexandra Del Bene.',
+          'Ambiente musicale durante tutto l’evento.',
+          'Aree ristorazione (food corner) con piatti tradizionali italiani.',
+          'Stand con prodotti tipici e informazioni culturali e turistiche.'
+        ],
+        regTitle: 'Iscrizioni',
+        regBody: 'Per partecipare ai laboratori per bambini, alle conferenze e alle altre attività a numero chiuso che si terranno negli Spazi A e B, sarà necessario iscriversi in anticipo presso lo stand AIS, fino a esaurimento dei posti.',
+        nowLabel: 'In corso ora',
+        todayLabel: 'Oggi',
+        days: [
+          { name: 'Sabato, 3 ottobre', date: '2026-10-03', hours: '11:00 – 23:00', items: [
+            { ora:'11:00', t:'Apertura delle porte', s:'Rivolto ai cittadini di Siviglia e ai visitatori.' },
+            { ora:'11:30', t:'Esibizione della Banda Sinfonica Municipale di Siviglia', s:'Sotto la direzione di Guillermo Martínez Arana.' },
+            { ora:'12:15', t:'Masterclass di Pizza', s:'A cura di Antonio Silvestri, Maestro Pizzaiolo Napoletano del GMI FOOD GROUP.' },
+            { ora:'13:00', t:'MAMMA MIA! Sopravvivenza in Italia: parla, ordina e gesticola come un italiano', s:'Organizza: Società Dante Alighieri di Siviglia. Posti limitati.' },
+            { ora:'14:00', t:'Mostra e raduno di motociclette Vespa d’epoca', s:'A cura di: Vestacados Alcores.' },
+            { ora:'16:00', t:'Laboratorio per bambini: Manualità con la pasta', s:'Laboratorio per bambini dai 5 ai 9 anni. A cura di Federica (La Cocinera Tremenda). Posti limitati.' },
+            { ora:'16:15', t:'Proiezione del Docufilm «UTOPIA – VIAGGI SENZA RITORNO»', s:'Prodotto da Com.It.Es. Madrid.' },
+            { ora:'17:30', t:'Conferenza con Antonio Gnisci: Ingegneria romana', s:'Con la partecipazione dell’Associazione Latium Madrid, accompagnati dall’Associazione di Rievocazione Storica ULPIA AELIA.' },
+            { ora:'18:30', t:'Esibizione del Coro «Italiani in Spagna» di Madrid', s:'Diretto da Francesco Ercolani.' },
+            { ora:'18:30', t:'Laboratorio per bambini: «E se arrivasse un pinguino a Siviglia?»', s:'Laboratorio di pensiero creativo per bambini dagli 8 ai 12 anni, tenuto da Cecilia Ravaioli.' },
+            { ora:'19:30', t:'Incontro culturale: «ITALOFONIA: Lingua oltre i confini»', s:'Laboratorio con Alfredo.' },
+            { ora:'20:30', t:'Concerto di musica italiana', s:'Duo Rocca Pantaleoni.' },
+            { ora:'21:30', t:'Disco Italia', s:'Sessione con DJ Rega.' },
+            { ora:'23:00', t:'Chiusura della prima giornata', s:'' }
+          ]},
+          { name: 'Domenica, 4 ottobre', date: '2026-10-04', hours: '10:00 – 20:00', items: [
+            { ora:'10:00', t:'Apertura delle porte', s:'' },
+            { ora:'11:00', t:'Laboratorio per bambini: “Giocare al Teatro”', s:'Laboratorio teatrale per bambini dai 5 ai 9 anni, tenuto da Cecilia Ravaioli.' },
+            { ora:'11:00', t:'Conferenza su arte e storia: Dal Quattrocento al Barro de Triana', s:'L’influenza della maiolica toscana nella Siviglia mudéjar attraverso Niculoso Pisano.' },
+            { ora:'12:00', t:'Bersi la storia. Il vino della Betica romana', s:'A cura di Manuel León Bejar, Direttore scientifico di Gastronomia dell’Università di Cadice (UCA).' },
+            { ora:'14:00', t:'Disco Italia', s:'Sessione con Deliberato DJ.' },
+            { ora:'16:00', t:'Laboratorio di crescita creativa: “Pensare fuori dagli schemi”', s:'Laboratorio di pensiero creativo e divergente per adulti, tenuto da Cecilia Ravaioli.' },
+            { ora:'17:15', t:'Conversazione letteraria: Italia e Andalusia: “Due sponde dello stesso mare”', s:'Con Alessandro Gianetti e Ignacio Arrabal. Tema: traduzione, identità mediterranea e scambi culturali tra Italia e Andalusia.' },
+            { ora:'18:00', t:'Karaoke italiano', s:'Organizzato dall’AIS.' },
+            { ora:'20:00', t:'Chiusura ufficiale della X Fiera d’Italia', s:'Ringraziamenti istituzionali e chiusura dell’evento.' }
+          ]}
+        ]
+      }
+    };
+  }
+  renderVals() {
+    const L = this.state.lang;
+    const d = this.data()[L];
+    return Object.assign({}, this.nav(L), this.langBtns(L), d, {
+      days: this.withLiveStatus(d.days),
+      setES: () => this.setLang('es'),
+      setIT: () => this.setLang('it')
+    });
+  }
+}
+</script>
+</body>
+</html>

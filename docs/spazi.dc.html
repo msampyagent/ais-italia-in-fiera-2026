@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,600;6..96,700;6..96,900&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FBF6EC;}
+*{box-sizing:border-box;}
+a{color:#0065AF;text-decoration:none;}
+a:hover{color:#C71218;}
+img{display:block;}
+</style>
+</helmet>
+
+<div style="font-family:'Source Sans 3',system-ui,sans-serif;color:#1A1A1A;background:#FBF6EC;min-height:100vh;">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(251,246,236,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+      <a href="index.dc.html" style="display:block;flex:0 0 auto;"><img src="assets/deco/title_lockup.svg" alt="Italia in Fiera" style="height:46px;width:auto;"></a>
+      <nav style="display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;flex:1 1 auto;font-size:13.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;">
+        <a href="index.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nHome }}</a>
+        <a href="programma.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nProg }}</a>
+        <a href="concorso.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nFoto }}</a>
+        <a href="galleria.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nGal }}</a>
+        <a href="spazi.dc.html" style="color:#C71218;padding:4px 0;border-bottom:2px solid #C71218;">{{ nEsp }}</a>
+        <a href="quando-dove.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nDove }}</a>
+        <a href="sponsor.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nSpon }}</a>
+        <a href="contatti.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nCont }}</a>
+      </nav>
+      <div style="display:flex;gap:0;flex:0 0 auto;border:1px solid rgba(26,26,26,0.25);border-radius:2px;overflow:hidden;">
+        <button onClick="{{ setES }}" style="{{ btnES }}">ES</button>
+        <button onClick="{{ setIT }}" style="{{ btnIT }}">IT</button>
+      </div>
+    </div>
+    <div style="height:3px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+  </header>
+
+  <section style="position:relative;overflow:hidden;">
+    <img src="assets/deco/casino_sketch.svg" alt="" style="position:absolute;left:50%;top:-10%;width:66%;transform:translateX(-50%);opacity:0.09;pointer-events:none;">
+    <div style="position:relative;max-width:1180px;margin:0 auto;padding:clamp(34px,5vw,64px) 22px clamp(28px,4vw,44px);text-align:center;">
+      <p style="margin:0 0 12px;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:#0065AF;">{{ eyebrow }}</p>
+      <h1 style="margin:0;font-family:'Bodoni Moda',Georgia,serif;font-weight:900;font-size:clamp(38px,6vw,68px);line-height:1;text-wrap:balance;">{{ title }}</h1>
+      <div style="width:72px;height:4px;margin:24px auto 0;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+    </div>
+  </section>
+
+  <section style="max-width:1180px;margin:0 auto;padding:0 22px clamp(40px,6vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;">
+    <sc-for list="{{ spaces }}" as="s" hint-placeholder-count="3">
+      <article style="display:flex;flex-direction:column;background:#FFFFFF;border:1px solid rgba(26,26,26,0.14);">
+        <div style="{{ s.band }}"></div>
+        <div style="padding:26px 24px 30px;">
+          <p style="margin:0 0 10px;font-size:12px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:#6A6A6A;">{{ s.zone }}</p>
+          <h2 style="margin:0 0 12px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(24px,2.8vw,30px);font-weight:700;color:#0065AF;text-wrap:balance;">{{ s.name }}</h2>
+          <p style="margin:0;font-size:16.5px;line-height:1.55;color:#3A3A3A;text-wrap:pretty;">{{ s.desc }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+
+  <section style="background:#1A1A1A;color:#FBF6EC;">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(36px,5vw,60px) 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(24px,4vw,48px);align-items:center;">
+      <div style="min-width:0;">
+        <h2 style="margin:0 0 14px;font-family:'Bodoni Moda',Georgia,serif;font-size:clamp(22px,2.6vw,30px);font-weight:700;">{{ regTitle }}</h2>
+        <p style="margin:0 0 22px;font-size:16.5px;line-height:1.6;color:rgba(251,246,236,0.85);text-wrap:pretty;">{{ regBody }}</p>
+        <a href="programma.dc.html" style="display:inline-block;padding:13px 26px;background:#FBF6EC;color:#1A1A1A;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;" style-hover="background:#C71218;color:#FFFFFF;">{{ ctaProg }}</a>
+      </div>
+      <div style="min-width:0;display:flex;justify-content:center;">
+        <img src="assets/spazi.jpeg" alt="Espacios de la feria" style="width:100%;max-width:360px;height:auto;border:1px solid rgba(251,246,236,0.2);">
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#FBF6EC;border-top:1px solid rgba(26,26,26,0.12);">
+    <div style="max-width:1180px;margin:0 auto;padding:44px 22px 30px;">
+      <div style="height:3px;margin:0 0 18px;background:linear-gradient(90deg,#007030 0 33.33%,#FBF6EC 33.33% 66.66%,#C71218 66.66% 100%);"></div>
+      <p style="margin:0;text-align:center;font-size:13px;color:#6A6A6A;">X Feria de Italia · Sevilla 2026 · @associazioneitalianiasiviglia</p>
+      <p style="margin:10px 0 0;text-align:center;font-size:11px;color:#A8A8A8;">{{ credit }} <a href="https://rapidoybien.es" target="_blank" rel="noopener noreferrer" style="color:#A8A8A8;text-decoration:none;border-bottom:1px solid rgba(168,168,168,0.4);">rapidoybien.es</a></p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { lang: 'es' };
+  componentDidMount() {
+    try { const l = localStorage.getItem('iif-lang'); if (l === 'it' || l === 'es') this.setState({ lang: l }); } catch (e) {}
+  }
+  setLang(l) { try { localStorage.setItem('iif-lang', l); } catch (e) {} this.setState({ lang: l }); }
+  nav(L) {
+    const N = {
+      es: { nHome:'Inicio', nProg:'Programa', nFoto:'Concurso', nGal:'Galería', nEsp:'Espacios', nDove:'Cuándo y dónde', nSpon:'Patrocinadores', nCont:'Contacto' },
+      it: { nHome:'Home', nProg:'Programma', nFoto:'Concorso', nGal:'Galleria', nEsp:'Spazi', nDove:'Quando e dove', nSpon:'Sponsor', nCont:'Contatti' }
+    };
+    return N[L];
+  }
+  langBtns(L) {
+    const on = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:#1A1A1A;color:#FBF6EC;';
+    const off = 'padding:5px 11px;border:0;cursor:pointer;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;background:transparent;color:#1A1A1A;';
+    return { btnES: L === 'es' ? on : off, btnIT: L === 'it' ? on : off };
+  }
+  renderVals() {
+    const L = this.state.lang;
+    const band = (c) => 'height:8px;background:' + c + ';';
+    const T = {
+      es: {
+        eyebrow: 'Casino de la Exposición',
+        title: 'Descubre los espacios de la feria',
+        regTitle: 'Actividades con aforo limitado',
+        regBody: 'Las conferencias, talleres y demás actividades con aforo limitado se celebran principalmente en los Espacios A y B. Hay que inscribirse previamente en el stand de AIS, hasta completar el aforo.',
+        ctaProg: 'Ver el programa',
+        spaces: [
+          { zone:'Zona exterior', name:'Piazza Italia', desc:'Gastronomía y stands de comida.', band: band('#007030') },
+          { zone:'Zona interior', name:'Villaggio Italia', desc:'Stands, actividades y propuestas de la feria.', band: band('#0065AF') },
+          { zone:'Zona interior', name:'Espacio A · Espacio B', desc:'Conferencias, talleres y actividades con aforo limitado.', band: band('#C71218') }
+        ],
+        credit: 'Creado por'
+      },
+      it: {
+        eyebrow: 'Casino de la Exposición',
+        title: 'Scopri gli spazi della fiera',
+        regTitle: 'Attività a numero chiuso',
+        regBody: 'Conferenze, laboratori e le altre attività a numero chiuso si tengono principalmente negli Spazi A e B. Bisogna iscriversi in anticipo presso lo stand AIS, fino a esaurimento dei posti.',
+        ctaProg: 'Vedi il programma',
+        spaces: [
+          { zone:'Zona esterna', name:'Piazza Italia', desc:'Gastronomia e stand di cibo.', band: band('#007030') },
+          { zone:'Zona interna', name:'Villaggio Italia', desc:'Stand, attività e proposte della fiera.', band: band('#0065AF') },
+          { zone:'Zona interna', name:'Spazio A · Spazio B', desc:'Conferenze, laboratori e attività a numero chiuso.', band: band('#C71218') }
+        ],
+        credit: 'Creato da'
+      }
+    }[L];
+    return Object.assign({}, this.nav(L), this.langBtns(L), T, {
+      setES: () => this.setLang('es'),
+      setIT: () => this.setLang('it')
+    });
+  }
+}
+</script>
+</body>
+</html>
