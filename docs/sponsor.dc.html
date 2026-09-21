@@ -37,6 +37,7 @@ img{display:block;}
         <a href="sponsor.dc.html" style="color:#C71218;padding:4px 0;border-bottom:2px solid #C71218;">{{ nSpon }}</a>
         <a href="contatti.dc.html" style="color:#1A1A1A;padding:4px 0;border-bottom:2px solid transparent;" style-hover="color:#0065AF;">{{ nCont }}</a>
       </nav>
+      <img src="assets/deco/logo_ais.svg" alt="AIS - Associazione Italiani a Siviglia" style="height:36px;width:auto;flex:0 0 auto;">
       <div style="display:flex;gap:0;flex:0 0 auto;border:1px solid rgba(26,26,26,0.25);border-radius:2px;overflow:hidden;">
         <button onClick="{{ setES }}" style="{{ btnES }}">ES</button>
         <button onClick="{{ setIT }}" style="{{ btnIT }}">IT</button>
@@ -57,18 +58,16 @@ img{display:block;}
     <h2 style="margin:0 0 20px;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:#6A6A6A;text-align:center;">{{ instTitle }}</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
       <div style="display:flex;align-items:center;justify-content:center;padding:26px 18px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:130px;"><picture><source srcset="assets/logos/consolato_italia.webp" type="image/webp"><img src="assets/logos/consolato_italia.png" alt="Consolato Generale d'Italia Madrid" width="150" height="138" style="max-width:100%;max-height:72px;width:auto;height:auto;"></picture></div>
-      <div style="display:flex;align-items:center;justify-content:center;padding:26px 18px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:130px;"><img src="assets/deco/logo_ais.svg" alt="Associazione Italiani a Siviglia" style="max-width:100%;max-height:72px;width:auto;height:auto;"></div>
       <div style="display:flex;align-items:center;justify-content:center;padding:26px 18px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:130px;"><picture><source srcset="assets/logos/nosdo_sevilla.webp" type="image/webp"><img src="assets/logos/nosdo_sevilla.png" alt="Ayuntamiento de Sevilla" width="130" height="97" style="max-width:100%;max-height:62px;width:auto;height:auto;"></picture></div>
       <div style="display:flex;align-items:center;justify-content:center;padding:26px 18px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:130px;"><picture><source srcset="assets/logos/comites_madrid.webp" type="image/webp"><img src="assets/logos/comites_madrid.png" alt="Com.It.Es. Madrid" width="210" height="101" style="max-width:100%;max-height:68px;width:auto;height:auto;"></picture></div>
-      <div style="display:flex;align-items:center;justify-content:center;padding:26px 18px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:130px;"><img src="assets/deco/logo_dante.svg" alt="Società Dante Alighieri Sevilla" style="max-width:100%;max-height:62px;width:auto;height:auto;"></div>
     </div>
   </section>
 
   <section style="max-width:1180px;margin:0 auto;padding:0 22px clamp(48px,6vw,80px);">
     <h2 style="margin:0 0 20px;font-size:13px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:#6A6A6A;text-align:center;">{{ partnersTitle }}</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;">
       <sc-for list="{{ logos }}" as="l" hint-placeholder-count="24">
-        <div style="display:flex;align-items:center;justify-content:center;padding:20px 16px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:110px;">
+        <div style="display:flex;align-items:center;justify-content:center;padding:20px 16px;background:#FFFFFF;border:1px solid rgba(26,26,26,0.12);min-height:110px;flex:0 0 150px;">
           <img src="{{ l.src }}" alt="{{ l.alt }}" style="max-width:100%;max-height:60px;width:auto;height:auto;">
         </div>
       </sc-for>
@@ -135,6 +134,7 @@ class Component extends DCLogic {
       }
     }[L];
     const logos = [
+      ['assets/deco/logo_dante.svg', 'Società Dante Alighieri Sevilla'],
       ['assets/deco/logo_gmi.svg', 'GMI Food Group'],
       ['assets/deco/logo_pascucci.svg', 'Pascucci'],
       ['assets/deco/logo_cacharreria.svg', 'La Cacharrería'],
@@ -152,7 +152,6 @@ class Component extends DCLogic {
       ['assets/logos/casa_abruzzo.png', 'Casa Abruzzo'],
       ['assets/logos/comando_basilippo.png', 'Comando Basilippo'],
       ['assets/logos/la_locanda.png', 'La Locanda di Andrea'],
-      ['assets/logos/anema_facebook.png', 'Anema e Core'],
       ['assets/logos/latium.png', 'Latium'],
       ['assets/logos/endesa.png', 'Endesa'],
       ['assets/logos/jucal.png', 'Jucal'],
